@@ -18,6 +18,20 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate() {
 
         Vector3 targetPosition = target.TransformPoint(offset);
+        
+        if(targetPosition.x > 6) {
+            targetPosition.x = 6;
+        }
+        if (targetPosition.x < -6) {
+            targetPosition.x = -6;
+        }
+
+        if (targetPosition.y > 5) {
+            targetPosition.y = 5;
+        }
+        if (targetPosition.y < -5) {
+            targetPosition.y = -5;
+        }
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothSpeed);
     }
